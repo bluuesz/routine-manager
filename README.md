@@ -13,7 +13,8 @@
 </p>
 
 <h2>Why?</h2>
-Maybe I have ADHD and it hurts me a lot when organizing my day to day. And yes, I know you already have apps to do this, but I want my own as well as being a great opportunity to learn new technologies.
+...
+<!-- Maybe I have ADHD and it hurts me a lot when organizing my day to day. And yes, I know you already have apps to do this, but I want my own as well as being a great opportunity to learn new technologies. -->
 
 
 <h2>Built With</h2>
@@ -31,6 +32,7 @@ Maybe I have ADHD and it hurts me a lot when organizing my day to day. And yes, 
 
 First you need to have `node` or `yarn` installed on your machine. Then, you can clone this repository and run the following commands inside the project folder:
 
+### Server
 1. `cd server`
 2. `yarn`;
 3. `yarn start`;
