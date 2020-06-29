@@ -3,13 +3,13 @@
 </h1>
 
 
-<p align="left">
+<!-- <p align="left">
   <a href="https://twitter.com/intent/user?screen_name=guilherme_rodz" target="_blank">
     <img
       src="https://img.shields.io/twitter/url?label=Follow-me%20%40Bluuesz&style=social&url=https%3A%2F%2Fshields.io"
       alt="Follow @guilherme_rodz"
     />
-  </a>
+  </a> -->
 </p>
 
 <h2>Why?</h2>
