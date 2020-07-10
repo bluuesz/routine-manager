@@ -4,15 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --transpileOnly --inspect --ignore-watch node_modules --no-notify src/index.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "dev": "ts-node-dev --transpileOnly --inspect --ignore-watch node_modules --no-notify src/index.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
-    "@types/cookie-parser": "^1.4.2",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.6",
-    "@types/express-session": "^1.17.0",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.30",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
@@ -37,9 +34,6 @@
     "graphql": "^15.1.0",
     "graphql-tools": "^6.0.11",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.22",
-    "pg": "^8.2.1",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.25"
+    "mongoose": "^5.9.22"
   }
 }
