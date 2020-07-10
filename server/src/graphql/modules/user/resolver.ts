@@ -1,13 +1,13 @@
 import bcrypt from 'bcryptjs';
 import { IResolvers } from 'graphql-tools';
-import User, { findUser } from '../../../db/models/User';
+import User from '../../../db/models/User';
 
-import { createTokens } from '../../../helpers/createTokens';
+import generateToken from '../../../helpers/generateToken';
 import { Context } from '../../context';
 
 interface IUser {
-  username: string;
-  email?: string;
+  name: string;
+  email: string;
   password: string;
 }
 
@@ -17,29 +17,35 @@ const resolvers: IResolvers = {
       if (!userId) {
         throw new Error('Not Authenticated');
       }
-      return findUser(userId);
+      return User.findById(userId);
     },
   },
   Mutation: {
-    register: async (_, { username, email, password }: IUser) => {
+    register: async (_, { name, email, password }: IUser) => {
+      const existEmail = await User.findOne({ email });
+
+      if (existEmail) {
+        throw new Error('This email already exists');
+      }
+
       const hashPassword = await bcrypt.hash(password, 10);
-      await User.create({
-        username,
+      const user = await User.create({
+        name,
         email,
         password: hashPassword,
-      }).save();
+      });
 
-      return true;
+      return user;
     },
-    login: async (_, { username, password }: IUser) => {
-      const user = await User.findOne({ where: { username } }); // refactor model this
+    login: async (_, { email, password }: IUser) => {
+      const user = await User.findOne({ email }); // refactor model this
 
       if (!user) throw new Error('User not found');
 
       const checkPassword = await bcrypt.compare(password, user.password);
       if (!checkPassword) throw new Error('Password does not match');
 
-      const { token } = createTokens(user);
+      const { token } = generateToken(user);
 
       return { user, token };
     },
