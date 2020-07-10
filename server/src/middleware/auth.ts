@@ -5,7 +5,7 @@ interface Payload {
   id: string;
 }
 
-const getUser = (token: string) => {
+export default (token: string) => {
   try {
     if (token) {
       return verify(token, SECRET_SESSION) as Payload;
@@ -15,5 +15,3 @@ const getUser = (token: string) => {
     return null;
   }
 };
-
-export default getUser;

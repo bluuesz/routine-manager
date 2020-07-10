@@ -1,29 +1,29 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  BaseEntity,
-  getRepository,
-} from 'typeorm';
+import mongoose from 'mongoose';
 
-@Entity('users')
-class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column()
-  username: string;
-
-  @Column()
+export interface IUser extends mongoose.Document {
+  name: string;
   email: string;
-
-  @Column()
   password: string;
-
-  @Column('int', { default: 0 })
-  count: number;
 }
 
-export const findUser = (id: string) => getRepository(User).findOne(id);
+const UserSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-export default User;
+export default mongoose.model<IUser>('User', UserSchema);

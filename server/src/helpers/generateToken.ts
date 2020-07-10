@@ -1,8 +1,8 @@
 import { sign } from 'jsonwebtoken';
-import User from '../db/models/User';
+import { IUser } from '../db/models/User';
 import { SECRET_SESSION } from '../utils/constants';
 
-export const createTokens = (user: User) => {
+export default (user: IUser) => {
   const token = sign({ id: user.id }, SECRET_SESSION, {
     expiresIn: '30min',
   });
