@@ -4,7 +4,7 @@ import { SECRET_SESSION } from '../utils/constants';
 
 export default (user: IUser) => {
   const token = sign({ id: user.id }, SECRET_SESSION, {
-    expiresIn: '30min',
+    expiresIn: '1d',
   });
 
   return { token };

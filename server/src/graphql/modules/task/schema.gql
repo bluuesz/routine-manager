@@ -1,0 +1,20 @@
+scalar DateTime
+scalar Date
+
+type Task {
+  _id: ID!
+  author: User!
+  title: String!
+  description: String!
+  date: DateTime!
+  time: String
+}
+
+type Query {
+  tasks: [Task!]!
+  task(date: Date!): [Task!]!
+}
+
+type Mutation {
+  createTask(title: String!, description: String!, date: DateTime!): Task!
+}

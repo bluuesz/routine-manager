@@ -4,5 +4,5 @@ export interface Context {
   req: Request;
   res: Response;
   next: NextFunction;
-  userId?: string;
+  userId: string;
 }

@@ -20,7 +20,7 @@ export default ({ typeDefs, resolvers }: Config): void => {
       const user = auth(token);
 
       return {
-        userId: user?.id,
+        userId: user && user.id,
         req,
         res,
       };

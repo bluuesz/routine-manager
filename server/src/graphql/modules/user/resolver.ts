@@ -1,22 +1,13 @@
 import bcrypt from 'bcryptjs';
 import { IResolvers } from 'graphql-tools';
-import User from '../../../db/models/User';
+import User, { IUser } from '../../../db/models/User';
 
 import generateToken from '../../../helpers/generateToken';
 import { Context } from '../../context';
 
-interface IUser {
-  name: string;
-  email: string;
-  password: string;
-}
-
 const resolvers: IResolvers = {
   Query: {
     me: (_, __, { userId }: Context) => {
-      if (!userId) {
-        throw new Error('Not Authenticated');
-      }
       return User.findById(userId);
     },
   },
@@ -37,7 +28,7 @@ const resolvers: IResolvers = {
 
       return user;
     },
-    login: async (_, { email, password }: IUser) => {
+    login: async (_, { email, password }: IUser, { userId }: Context) => {
       const user = await User.findOne({ email }); // refactor model this
 
       if (!user) throw new Error('User not found');
