@@ -5,6 +5,7 @@ export interface ITask extends mongoose.Document {
   title: string;
   description: string;
   date: Date;
+  complete: boolean;
 }
 
 const TaskSchema = new mongoose.Schema(
@@ -25,6 +26,11 @@ const TaskSchema = new mongoose.Schema(
     date: {
       type: Date,
       required: true,
+    },
+    complete: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
   },
   {

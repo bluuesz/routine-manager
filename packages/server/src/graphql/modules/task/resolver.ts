@@ -61,6 +61,7 @@ const resolvers: IResolvers = {
         title,
         description,
         date,
+        complete: false,
       });
 
       const time = formatISO(task.date, { representation: 'time' });
@@ -70,6 +71,7 @@ const resolvers: IResolvers = {
         description: task.description,
         date: task.date,
         time,
+        complete: task.complete,
       };
     },
   },

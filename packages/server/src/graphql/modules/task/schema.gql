@@ -8,6 +8,7 @@ type Task {
   description: String!
   date: DateTime!
   time: String
+  complete: Boolean!
 }
 
 type Query {
