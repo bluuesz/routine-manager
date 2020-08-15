@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 
 import express from 'express';
+import cors from 'cors';
 import { ApolloServer, Config } from 'apollo-server-express';
 
 import dbConnect from './db';
@@ -16,6 +17,7 @@ export default ({ typeDefs, resolvers }: Config): void => {
     resolvers,
     context: ({ req, res }) => {
       const tokenWithBearer = req.headers.authorization || '';
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const [bearer, token] = tokenWithBearer.split(' ');
       const user = auth(token);
 
@@ -28,6 +30,7 @@ export default ({ typeDefs, resolvers }: Config): void => {
   });
 
   const app = express();
+  app.use(cors());
 
   server.applyMiddleware({ app });
 

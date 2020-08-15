@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
+// eslint-disable-next-line @typescript-eslint/interface-name-prefix
 export interface ITask extends mongoose.Document {
+  id: string;
   author: string;
   title: string;
   description: string;

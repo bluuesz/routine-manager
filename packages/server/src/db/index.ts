@@ -4,8 +4,8 @@ export default (db: string): void => {
   const connectDb = (): void => {
     connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
       .then(() => console.log('Connect to DB!!'))
-      .catch(() => {
-        console.log('Erro to connect');
+      .catch((err) => {
+        console.log(err);
         return process.exit(1);
       });
   };

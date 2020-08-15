@@ -14,8 +14,13 @@ type Task {
 type Query {
   tasks: [Task!]!
   task(date: Date!): [Task!]!
+  ## TODO: offset optional
+  imcompleteTask(page: Int!): [Task!]!
+  completeTask: [Task!]!
 }
 
 type Mutation {
   createTask(title: String!, description: String!, date: DateTime!): Task!
+  completeTask(id: ID!): Boolean!
+  deleteTask(id: ID!): Boolean!
 }

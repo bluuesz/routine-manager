@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    '@react-native-community',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
@@ -20,6 +21,12 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    '@typescript-eslint/no-use-before-define': ['off'],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'prettier/prettier': 'error',
     'class-methods-use-this': 'off',
@@ -29,9 +36,16 @@ module.exports = {
       'ignorePackages',
       {
         ts: 'never',
+        tsx: 'never',
+        js: 'never',
       },
     ],
-    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': [
+      'error',
+      {
+        allowExpressions: true,
+      },
+    ],
   },
   settings: {
     'import/resolver': {

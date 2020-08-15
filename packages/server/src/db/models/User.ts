@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+// eslint-disable-next-line @typescript-eslint/interface-name-prefix
 export interface IUser extends mongoose.Document {
   name: string;
   email: string;

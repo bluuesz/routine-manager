@@ -28,7 +28,7 @@ const resolvers: IResolvers = {
 
       return user;
     },
-    login: async (_, { email, password }: IUser, { userId }: Context) => {
+    login: async (_, { email, password }: IUser) => {
       const user = await User.findOne({ email }); // refactor model this
 
       if (!user) throw new Error('User not found');
