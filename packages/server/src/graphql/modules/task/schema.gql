@@ -1,0 +1,26 @@
+scalar DateTime
+scalar Date
+
+type Task {
+  _id: ID!
+  author: User!
+  title: String!
+  description: String!
+  date: DateTime!
+  time: String
+  complete: Boolean!
+}
+
+type Query {
+  tasks: [Task!]!
+  task(date: Date!): [Task!]!
+  ## TODO: offset optional
+  imcompleteTask(page: Int!): [Task!]!
+  completeTask: [Task!]!
+}
+
+type Mutation {
+  createTask(title: String!, description: String!, date: DateTime!): Task!
+  completeTask(id: ID!): Boolean!
+  deleteTask(id: ID!): Boolean!
+}

@@ -1,0 +1,19 @@
+type Query {
+  me: User!
+}
+
+type User {
+  _id: ID!
+  name: String!
+  email: String!
+}
+
+type Mutation {
+  register(name: String!, email: String!, password: String!): User!
+  login(email: String!, password: String!): LoginResponse!
+}
+
+type LoginResponse {
+  token: String
+  user: User
+}
