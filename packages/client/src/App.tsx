@@ -10,6 +10,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import { IS_LOGGED_IN } from './graphql/isLogged';
+import { TaskData } from './graphql/tasks';
 
 import Routes from './routes/';
 import ResetCSS from './styles/reset';
@@ -33,7 +34,24 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  cache: new InMemoryCache({}),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          imcompleteTask: {
+            merge(_, incoming: TaskData[]) {
+              return [...incoming];
+            },
+          },
+          completeTask: {
+            merge(_, incoming: TaskData[]) {
+              return [...incoming];
+            },
+          },
+        },
+      },
+    },
+  }),
   link: authLink.concat(httpLink),
 });
 
